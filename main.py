@@ -6,10 +6,17 @@ import cv2
 import sys
 import random
 from PIL import Image
+from cv2 import VideoCapture
+from cv2 import imshow
+import time
 
-imagePath = sys.argv[1]
+cam = VideoCapture(0)
 
-image = cv2.imread(imagePath)
+result, image = cam.read()
+
+if result:
+    imshow("Target Practice", image)
+
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 faceCascade = cv2.CascadeClassifier(
