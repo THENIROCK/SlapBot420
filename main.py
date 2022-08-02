@@ -8,7 +8,20 @@ import random
 from PIL import Image
 from cv2 import VideoCapture
 from cv2 import imshow
+import pyttsx3
 import time
+
+voice_engine = pyttsx3.init()
+voice_engine.say("Welcome to SLAP BOT FOUR TWENTY RUSSIAN ROULETTE EDITION.")
+voice_engine.runAndWait()
+voice_engine.say("Please stand in a line so I can see you.")
+voice_engine.runAndWait()
+voice_engine.say("Okay now, let's see")
+voice_engine.runAndWait()
+voice_engine.say("I choose...")
+voice_engine.runAndWait()
+voice_engine.say("This human.")
+voice_engine.runAndWait()
 
 cam = VideoCapture(0)
 
@@ -47,3 +60,7 @@ print("[INFO] Image faces_detected.jpg written to filesystem: ", status)
 chosen_person = Image.open(str(random.randint(1, counter)) + "_faces.jpg")
 
 chosen_person.show()
+
+voice_engine.say(
+    "Please place your forehead on the red button so I can slap you.")
+voice_engine.runAndWait()
