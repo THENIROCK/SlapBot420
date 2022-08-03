@@ -51,8 +51,19 @@ for (x, y, w, h) in faces:  # iterate through list of pixel locations
     # get all the pixels within face recognition rectangle
     roi_color = image[y:y + h, x:x + w]
     print("[INFO] Object found. Saving locally.")
+
     cv2.imwrite(str(counter) + '_faces.jpg', roi_color)
 
+    src = cv2.imread(str(counter) + '_faces.jpg', cv2.IMREAD_UNCHANGED)
+    # factor by which the image is resized
+    scale = 10
+    width = int(src.shape[1] * scale)
+    height = int(src.shape[0] * scale)
+    # new size
+    dsize = (width, height)
+    # resize image
+    output = cv2.resize(src, dsize)
+    cv2.imwrite(str(counter) + '_faces.jpg', output)
 
 status = cv2.imwrite('faces_detected.jpg', image)
 print("[INFO] Image faces_detected.jpg written to filesystem: ", status)
